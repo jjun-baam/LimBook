@@ -12,10 +12,15 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const storage = firebase.storage();
 
+function change_email() {
+  //지금 골라진 옵션의 순서와 값 구하기
+  var idx = email_sel.options.selectedIndex;
+  var val = email_sel.options[idx].value;
+  
+  email_add.value = val;
+}
 
-      
 $('#register').click(function(){
-
   var 이메일 = $('#email-new').val();
   var 패스워드 = $('#pw-new').val();
   var 닉네임 = $('#name-new').val();

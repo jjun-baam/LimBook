@@ -321,12 +321,16 @@
      -->
       <div class="form">
         <label>닉네임<input type="text" placeholder="닉네임을 입력하세요." id="name-new"></label>
-        <label>이메일<input type="text" placeholder="이메일을 입력하세요." id="email-new"/></label>
-        <select name="email_sel" id="email_sel" onchange="change_email();">
-          <option value="naver.com">naver</option>
-          <option value="gmail.com">google</option>
-          <option value="naver.com">naver</option>
-        </select>
+        <label>이메일</label>
+        <div class="email">
+          <input type="text" placeholder="이메일을 입력하세요." name="email-id" id="email-id"/>
+          <input type="text" placeholder="@.com" name="email_add" id="email_add"/>
+          <select name="email_sel" id="email_sel" onchange="change_email();">
+            <option value="@naver.com">naver</option>
+            <option value="@gmail.com">google</option>
+            <option value="@daum.net">daum</option>
+          </select>       
+        </div>
         <input type="password" placeholder="비밀번호를 입력하세요." id="pw-new"/>
         <input type="password" placeholder="비밀번호 재확인." id="pw-new"/>
         <input type="text" placeholder="이메일을 입력하세요." id="email-new"/>

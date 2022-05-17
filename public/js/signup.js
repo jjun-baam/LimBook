@@ -19,15 +19,19 @@ function change_email() {
   
   email_add.value = val;
 }
+var email1 = document.getElementById("email_id");
+var email2 = document.getElementById("email_add");
 
 $('#register').click(function(){
-  var 이메일 = $('#email-new').val();
-  var 패스워드 = $('#pw-new').val();
-  var 닉네임 = $('#name-new').val();
+  // var 이메일 = $('#email-new').val();
+  // var 패스워드 = $('#pw-new').val();
+  // var 닉네임 = $('#name-new').val();
 
-  firebase.auth().createUserWithEmailAndPassword(이메일, 패스워드).then(async (result)=>{
-    console.log(result.user)
-    await result.user.updateProfile( {displayName : 닉네임} )
-    window.location.href = "/";
-  })
+  // firebase.auth().createUserWithEmailAndPassword(이메일, 패스워드).then(async (result)=>{
+  //   console.log(result.user)
+  //   await result.user.updateProfile( {displayName : 닉네임} )
+  //   window.location.href = "/";
+  // })
+  var email = email1.value + email2.value;
+  console.log(email);
 })

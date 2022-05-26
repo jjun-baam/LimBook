@@ -24,12 +24,7 @@
       referrerpolicy="no-referrer"
     ></script>
     <!-- GSAP & ScrollToPlugin -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
-      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"
       integrity="sha512-agNfXmEo6F+qcj3WGryaRvl9X9wLMQORbTt5ACS9YVqzKDMzhRxY+xjgO45HCLm61OwHWR1Oblp4QSw/SGh9SA=="
@@ -58,9 +53,7 @@
   <body>
     <nav class="navbar nav-global fixed-top navbar-expand-sm">
       <div class="container">
-        <a class="navbar-brand" href="javascript:history.back()">
-          <i class="material-icons ic-filter">arrow_back_ios</i>뒤로
-        </a>
+        <a class="navbar-brand" href="javascript:history.back()"> <i class="material-icons ic-filter">arrow_back_ios</i>뒤로 </a>
         <ul class="navbar-nav ml-auto" id="ullist">
           <div class="container container-sm container-detail">
             <button class="btn btn-outline-secondary" id="chat">채팅</button>
@@ -85,11 +78,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
 
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script type="module" src="/js/firebaseConfig.js"></script>
     <script type="module" src="/js/loginCheck.js"></script>
@@ -116,15 +105,43 @@
                 </h4>
                 <ul class="list-product-information">
                     <li class="list-item category">${result.data().category} <span id="span-category"></span></li>
-                    <li class="list-item date">${result
-                      .data()
-                      .date.toDate()}<span><time datetime='2019-08-20T08:30:00Z' id="time"></time></span></li>
+                    <li class="list-item date">${result.data().date.toDate()}<span><time datetime='2019-08-20T08:30:00Z' id="time"></time></span></li>
                 </ul>
                 <div class="description"></div>`;
           $("#ullist").append(템플릿);
         });
 
-      //채팅 버튼 눌렀을 때 자기자신이랑 같으면 오류 메시지
+      $("#chat").click(() => {
+        const 내uid = JSON.parse(localStorage.getItem("user"));
+        if (내uid == 판매자uid) {
+          window.location.href = `/myChat.html?id=${상품id}&id2=${내uid}`;
+        } else {
+          db.collection("product")
+            .doc(상품id)
+            .collection("chat-room")
+            .where("uid", "==", 내uid)
+            .get()
+            .then(async (result) => {
+              console.log(result);
+              if (result.empty) {
+                const chatRoom = {
+                  uid: 내uid,
+                  chatName: 상품명,
+                  date: new Date(),
+                };
+                await db.collection("product").doc(상품id).collection("chat-room").add(chatRoom);
+                console.log("채팅방이 생성되었습니다.");
+                window.location.href = `/chat.html?id=${상품id}`;
+              } else {
+                console.log(result);
+                console.log("채팅방이 이미 있습니다.");
+                window.location.href = `/chat.html?id=${상품id}`;
+              }
+            });
+        }
+      });
+
+      /** //채팅 버튼 눌렀을 때 자기자신이랑 같으면 오류 메시지
       //다르면 로직 수행
       $("#chat").click(() => {
         const 내uid = JSON.parse(localStorage.getItem("user"));
@@ -151,11 +168,11 @@
                 console.log("있음");
                 console.log(result);
                 // 비어 있지 않을 때 즉, 값이 있을 때
-                //window.location.href = "/chat.html?id=" + 내uid;
+                //window.location.href = `/chat.html?id=${내uid}`;
               }
             });
         }
-      });
+      }); **/
     </script>
   </body>
 </html>

@@ -77,7 +77,14 @@
         <textarea class="form-control mt-2" id="content" placeholder="content"></textarea>
         <input type="text" class="form-control mt-2" id="price" placeholder="price" />
         <input class="form-control mt-2" type="file" id="image" />
-        <input class="form-control mt-2" type="text" id="category" placeholder="category" />
+        <select id="category">
+          <option value="">--선택해주세요--</option>
+          <option value="1">공학계열</option>
+          <option value="2">인문사회계열</option>
+          <option value="3">자연과학계열</option>
+          <option value="4">예체능</option>
+          <option value="5">교양 및 기타</option>
+        </select>
         <button class="btn btn-danger mt-3" id="send">올리기</button>
       </div>
     </section>
@@ -187,43 +194,47 @@
       import { db, storage } from "/js/firebaseConfig.js";
 
       $("#send").click(function () {
-        var file = document.querySelector("#image").files[0];
+        if ($("#category").val() == "") {
+          alert("카테고리를 선택해주세요");
+        } else {
+          var file = document.querySelector("#image").files[0];
 
-        var storageRef = storage.ref();
-        var savedurl = storageRef.child("image/" + file.name);
-        var uploaded = savedurl.put(file);
+          var storageRef = storage.ref();
+          var savedurl = storageRef.child("image/" + file.name + String(new Date()));
+          var uploaded = savedurl.put(file);
 
-        uploaded.on(
-          "state_changed",
-          // 변화시 동작하는 함수
-          null,
-          //에러시 동작하는 함수
-          (error) => {
-            console.error("실패사유는", error);
-          },
-          // 성공시 동작하는 함수
-          () => {
-            uploaded.snapshot.ref.getDownloadURL().then((url) => {
-              var savequery = {
-                title: $("#title").val(),
-                price: $("#price").val(),
-                date: new Date(),
-                category: $("#category").val(),
-                img: url,
-                uid: JSON.parse(localStorage.getItem("user")),
-              };
+          uploaded.on(
+            "state_changed",
+            // 변화시 동작하는 함수
+            null,
+            //에러시 동작하는 함수
+            (error) => {
+              console.error("실패사유는", error);
+            },
+            // 성공시 동작하는 함수
+            () => {
+              uploaded.snapshot.ref.getDownloadURL().then((url) => {
+                var savequery = {
+                  title: $("#title").val(),
+                  price: $("#price").val(),
+                  date: new Date(),
+                  category: $("#category option:selected").text(),
+                  img: url,
+                  uid: JSON.parse(localStorage.getItem("user")),
+                };
 
-              db.collection("product")
-                .add(savequery)
-                .then((result) => {
-                  window.location.href = "./list.html";
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            });
-          }
-        );
+                db.collection("product")
+                  .add(savequery)
+                  .then((result) => {
+                    window.location.href = "./list.html";
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              });
+            }
+          );
+        }
       });
     </script>
   </body>

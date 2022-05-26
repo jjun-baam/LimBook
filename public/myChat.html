@@ -42,25 +42,16 @@
       const 내uid = JSON.parse(localStorage.getItem("user"));
       const queryString = new URLSearchParams(window.location.search);
       const 상품id = queryString.get("id");
+      const myDiv = document.getElementById("groupItem");
+      const inputText = document.getElementById("#chat-input");
+
       let 채팅방id;
       let 템플릿;
-      //const 상품쿼리 = db.collection("product").doc(상품id);
 
       db.collection("product")
         .doc(상품id)
         .collection("chat-room")
-        .where("uid", "==", 내uid)
-        .get()
-        .then((result) => {
-          console.log(result);
-          채팅방id = result.docs[0].id;
-          showMessage(채팅방id);
-        });
-
-      /* db.collection("product")
-        .doc(상품id)
-        .collection("chat-room")
-        .where("uid", "==", 내uid)
+        .orderBy("date")
         .get()
         .then((result) => {
           result.forEach((a) => {
@@ -69,31 +60,18 @@
               <h6 class="text-small">${a.id}</h6>
             </li>`;
             $("#group").append(templates);
-
-            $(".list-group-item").click(function (e) {
-              채팅방id = $(this).children(".text-small").text();
-
-              e.stopImmediatePropagation();
-
-              db.collection("product")
-                .doc(상품id)
-                .collection("chat-room")
-                .doc(채팅방id)
-                .collection("messages")
-                .onSnapshot((result) => {
-                  $(".chat-content").html("");
-
-                  result.forEach((a) => {
-                    const chatdata = a.data().uid;
-                    var 템플릿;
-                    if (chatdata == 내uid) 템플릿 = `<li><span class="chat-box mine">${a.data().content}</span></li>`;
-                    else 템플릿 = `<li><span class="chat-box">${a.data().content}</span></li>`;
-                    $(".chat-content").append(템플릿);
-                  });
-                });
-            });
           });
-        }); */
+          $(".chat-content").html("채팅방을 클릭해주세요");
+
+          $(".list-group-item").click(function (e) {
+            console.log("클릭되었습니다.");
+            채팅방id = $(this).children(".text-small").text();
+            console.log(채팅방id);
+            e.stopImmediatePropagation();
+
+            showMessage(채팅방id);
+          });
+        });
 
       function showMessage(data) {
         db.collection("product")
@@ -114,42 +92,6 @@
             });
           });
       }
-
-      /** db.collection("chatting")
-        .where("participant", "array-contains", 내uid)
-        .get()
-        .then((result) => {
-          result.forEach((a) => {
-            const templates = `<li class="list-group-item">
-              <h6>${a.data().product}</h6>
-              <h6 class="text-small">${a.id}</h6>
-            </li>`;
-            $("#group").append(templates);
-
-            $(".list-group-item").click(function (e) {
-              채팅방id = $(this).children(".text-small").text();
-
-              e.stopImmediatePropagation();
-
-              db.collection("chatting")
-                .doc(채팅방id)
-                .collection("messages")
-                .orderBy("data")
-                .onSnapshot((result) => {
-                  $(".chat-content").html("");
-
-                  result.forEach((a) => {
-                    const chatdata = a.data().uid;
-                    var 템플릿;
-                    if (chatdata == 내uid) 템플릿 = `<li><span class="chat-box mine">${a.data().content}</span></li>`;
-                    else 템플릿 = `<li><span class="chat-box">${a.data().content}</span></li>`;
-                    $(".chat-content").append(템플릿);
-                  });
-                });
-            });
-          });
-        }); **/
-
       $("#send").click(function () {
         const 데이터 = {
           content: $("#chat-input").val(),

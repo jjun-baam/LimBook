@@ -83,14 +83,11 @@
 											<th scope="row"><label for="category">카테고리</label><span class="icon_required">필수</span></th>
 											<td>
 												<select name="category" id="category" class="input01 width_150">
-													<option value="카테고리1">카테고리1 (123)</option>
-													<option value="카테고리2">카테고리2 (123)</option>
-													<option value="카테고리3">카테고리3 (123)</option>
-													<option value="카테고리4">카테고리4 (123)</option>
-													<option value="카테고리5">카테고리5 (123)</option>
-													<option value="카테고리6">카테고리6 (123)</option>
-													<option value="카테고리7">카테고리7 (123)</option>
-													<option value="카테고리8">카테고리8 (123)</option>
+													<option value="카테고리1">공학계열</option>
+													<option value="카테고리2">인문사회계열</option>
+													<option value="카테고리3">자연과학계열</option>
+													<option value="카테고리4">예체능</option>
+													<option value="카테고리5">교양 및 기타</option>
 												</select>
 												<span class="guide">* 카테고리를 선택해주세요</span>
 											</td>
@@ -98,14 +95,14 @@
 										<tr>
 											<th scope="row"><label for="subject">제목</label><span class="icon_required">필수</span></th>
 											<td>
-												<input type="text" name="subject" id="subject" placeholder="제목을 입력해주세요" class="input01 required width_400" />
+												<input type="text" name="subject" id="subject" placeholder="제목을 입력해주세요" maxlength="20" class="input01 required width_400" />
 												<span class="guide">* 20자 이내로 입력하세요</span>
 											</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="writer">작성자</label><span class="icon_required">필수</span></th>
 											<td>
-												<input type="text" name="writer" id="writer" placeholder="이름(닉네임)을 입력해주세요" class="input01 required width_400" />
+												<input type="text" name="writer" id="writer" placeholder="이름(닉네임)을 입력해주세요" maxlength="10" class="input01 required width_400" />
 												<span class="guide">* 10자 이내로 입력하세요</span>
 											</td>
 										</tr>
@@ -158,7 +155,7 @@
 								</div>
 							</div>
 							<div class="btn_area text_right">
-								<a href="서브.html" class="btn_gray btn btn_regular btn_radius5">취소</a>
+								<a href="/review.html" class="btn_gray btn btn_regular btn_radius5">취소</a>
 								<input type="submit" value="쓰기" class="btn_board_write btn btn_navy btn_radius5 btn_regular btn_right">
 							</div>
 						</fieldset>

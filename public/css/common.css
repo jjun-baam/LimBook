@@ -4,7 +4,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
 }
 img {
   display: block;
@@ -29,7 +29,7 @@ a {
   cursor: pointer;
   box-sizing: border-box;
   display: block;
-  transition: .4s;
+  transition: 0.4s;
 }
 .btn:hover {
   background-color: #333;
@@ -87,15 +87,14 @@ a {
   transition-delay: 0s;
 }
 .show .back-to-position.delay-1 {
-  transition-delay: .3s;
+  transition-delay: 0.3s;
 }
 .show .back-to-position.delay-2 {
-  transition-delay: .6s;
+  transition-delay: 0.6s;
 }
 .show .back-to-position.delay-3 {
-  transition-delay: .9s;
+  transition-delay: 0.9s;
 }
-
 
 /* HEADER */
 header {
@@ -128,7 +127,7 @@ header .sub-menu {
 }
 header .sub-menu ul.menu {
   font-family: Arial, sans-serif;
-  display: flex;;
+  display: flex;
 }
 header .sub-menu ul.menu li {
   position: relative;
@@ -170,7 +169,7 @@ header .sub-menu .search input {
   background-color: #fff;
   color: #777;
   font-size: 12px;
-  transition: width .4s;
+  transition: width 0.4s;
 }
 header .sub-menu .search input:focus {
   width: 190px;
@@ -183,7 +182,7 @@ header .sub-menu .search .material-icons {
   bottom: 0;
   right: 5px;
   margin: auto;
-  transition: .4s;
+  transition: 0.4s;
 }
 header .sub-menu .search.focused .material-icons {
   opacity: 0;
@@ -210,7 +209,7 @@ header .main-menu .category:hover .category__name {
   border-top: 5px double #0095c8;
   border-left: 5px double #0095c8;
   border-right: 5px double #0095c8;
-  transition: .3s ease-out;
+  transition: 0.3s ease-out;
 }
 header .main-menu .category .category__contents {
   width: 100%;
@@ -219,7 +218,7 @@ header .main-menu .category .category__contents {
   visibility: hidden;
   transform-origin: top center;
   opacity: 0;
-  transition: all .4s;
+  transition: all 0.4s;
 }
 header .main-menu .category:hover .category__contents {
   visibility: visible;
@@ -268,11 +267,11 @@ header .main-menu .category .category__contents .contents__texture .inner h4 {
   font-weight: 700;
   display: inline;
 }
-header .main-menu .category .category__contents .contents__texture .inner2{
+header .main-menu .category .category__contents .contents__texture .inner2 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-header .main-menu .category .category__contents .contents__texture .inner2 p{
+header .main-menu .category .category__contents .contents__texture .inner2 p {
   border-radius: 7px;
   color: #fff;
   background-color: #0095c8;
@@ -288,7 +287,7 @@ header .badges .badge {
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 12px;
-  box-shadow: 4px 4px 10px rgba(0,0,0,.15);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 
@@ -349,15 +348,14 @@ footer .info {
 }
 footer .info span {
   margin-right: 20px;
-  color: #A7A9AC;
+  color: #a7a9ac;
   font-size: 12px;
-
 }
 footer .info span:last-child {
   margin-right: 0;
 }
 footer .copyright {
-  color: #A7A9AC;
+  color: #a7a9ac;
   font-size: 12px;
   text-align: center;
   margin-top: 12px;

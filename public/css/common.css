@@ -278,12 +278,13 @@ header .main-menu .category .category__contents .contents__texture .inner2 p {
   padding: 5px;
   display: inline;
 }
-header .badges {
+.badges {
+  /* position: fixed; */
   position: absolute;
   top: 132px;
   right: 12px;
 }
-header .badges .badge {
+.badges .badge {
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 12px;

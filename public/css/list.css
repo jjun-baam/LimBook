@@ -17,7 +17,7 @@
   content: "";
   width: 80px;
   height: 2px;
-  background-color: #ff8a3d;
+  background-color: #0095c8;
   display: block;
   margin: 40px auto;
 }
@@ -74,7 +74,7 @@
   float: right;
 }
 .list-products .card .price {
-  color: #ff8a3d;
+  color: #f11f08;
   font-weight: 700;
 }
 .list-products .card .text-muted {

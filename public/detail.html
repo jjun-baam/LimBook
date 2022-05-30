@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/detail.css" />
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
@@ -24,7 +25,12 @@
       referrerpolicy="no-referrer"
     ></script>
     <!-- GSAP & ScrollToPlugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"
       integrity="sha512-agNfXmEo6F+qcj3WGryaRvl9X9wLMQORbTt5ACS9YVqzKDMzhRxY+xjgO45HCLm61OwHWR1Oblp4QSw/SGh9SA=="
@@ -53,7 +59,9 @@
   <body>
     <nav class="navbar nav-global fixed-top navbar-expand-sm">
       <div class="container">
-        <a class="navbar-brand" href="javascript:history.back()"> <i class="material-icons ic-filter">arrow_back_ios</i>뒤로 </a>
+        <a class="navbar-brand" href="javascript:history.back()">
+          <i class="material-icons ic-filter">arrow_back_ios</i>뒤로
+        </a>
         <ul class="navbar-nav ml-auto" id="ullist">
           <div class="container container-sm container-detail">
             <button class="btn btn-outline-secondary" id="chat">채팅</button>
@@ -78,7 +86,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
 
     <script type="module" src="/js/firebaseConfig.js"></script>
     <script type="module" src="/js/loginCheck.js"></script>
@@ -96,18 +108,25 @@
         .then((result) => {
           판매자uid = result.data().uid;
           상품명 = result.data().title;
-
+          const timeStamp = result.data().date.seconds * 1000;
+          const date = new Date(timeStamp);
           const 템플릿 = `
-                <img src="${result.data().img}" alt="" width="100%" id="product-img">
+                <div class="description">
+                <img src="${result.data().img}" alt="" id="product-img">
                 <h3 class="product-title" id="product-title">${result.data().title}</h3>
-                <h4 class="product-price" style="font-weight:bold;" id="product-price">
+                <h4 class="product-price" id="product-price">
                     ${result.data().price}원
                 </h4>
                 <ul class="list-product-information">
-                    <li class="list-item category">${result.data().category} <span id="span-category"></span></li>
-                    <li class="list-item date">${result.data().date.toDate()}<span><time datetime='2019-08-20T08:30:00Z' id="time"></time></span></li>
+                    <li class="list-item category">카테고리 : ${result.data().category}
+                    </li>
+                    <li class="list-item date">${date.getFullYear()}년 ${
+            date.getMonth() + 1
+          }월 ${date.getDate()}일 ${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}
+                    </li>
                 </ul>
-                <div class="description"></div>`;
+
+                </div>`;
           $("#ullist").append(템플릿);
         });
 

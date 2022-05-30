@@ -108,20 +108,20 @@
 .tab_menu.type2 {
   margin: 0 -6px;
 }
-.tab_menu.type2 li {
+.tab_menu.type2 li span {
+  initial-value: initial;
   line-height: 36px;
-  padding: 0 6px 15px 6px;
-}
-.tab_menu.type2 li a {
+  /* padding: 0 6px 15px 6px; */
   display: block;
   padding: 0 16px;
   box-shadow: 0 0 10px #00000029;
   border-radius: 30px;
 }
-.tab_menu.type2 li a:hover {
+
+.tab_menu.type2 li span:hover {
   background: #fafafa;
 }
-.tab_menu.type2 li.active a {
+.tab_menu.type2 li.active span {
   background: #007796;
   color: #fff;
 }

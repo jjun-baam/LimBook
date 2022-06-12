@@ -324,11 +324,12 @@
       <h5 class="container-headline">도서 구입</h5>
   
       <div class="categories-group">
-          <a href="categorized_index.html" class="btn1 btn-category">공학계열</a>
-          <a href="#" class="btn1 btn-category">인문사회계열</a>
-          <a href="#" class="btn1 btn-category">자연과학계열</a>
-          <a href="#" class="btn1 btn-category">예체능</a>
-          <a href="#" class="btn1 btn-category">교양 및 기타</a>
+          <a href="#" class="btn1 btn-category" id="active"><span>전체</span></a>
+          <a href="#" class="btn1 btn-category" id="option1"><span>공학계열</span></a>
+          <a href="#" class="btn1 btn-category" id="option2"><span>인문사회계열</span></a>
+          <a href="#" class="btn1 btn-category" id="option3"><span>자연과학계열</span></a>
+          <a href="#" class="btn1 btn-category" id="option4"><span>예체능</span></a>
+          <a href="#" class="btn1 btn-category" id="option5"><span>교양 및 기타</span></a>
       </div>
   
       <ul class="list-products row" id="ullist">
@@ -454,7 +455,7 @@
   <script>
     const db = firebase.firestore();
 
-    db.collection('product').get().then((result)=>{
+    db.collection('product').orderBy("date", "desc").get().then((result)=>{
       result.forEach((doc)=>{
         var 템플릿 = `<li class="list-products-item col-12 col-md-4 col-lg-3">
               <a href="detail.html?id=${doc.id}">
@@ -463,10 +464,10 @@
                       <div class="card-body">
                           <h5 class="title">${doc.data().title}</h5>
                           <h6 class="price">${doc.data().price}원</h6>
-  
+                          <h6>작성자 : ${doc.data().name}</h6>
                           <div class="text-muted">
                               <h6 class="category">${doc.data().category}</h6>
-                              <p class="daytime">${doc.data().date.toDate()}</time>
+                              <p class="daytime">${doc.data().date.toDate()}</p>
                           </div>
                       </div>
                   </div>
@@ -475,6 +476,89 @@
         $('#ullist').append(템플릿)
       })
     })
+
+    function optionSelected(option) {
+        $("#ullist").html("");
+        if (option == null) {
+          db.collection("product")
+            .orderBy("date", "desc")
+            .get()
+            .then((result) => {
+              if (result.empty) {
+                $("#ullist").append("해당 카테고리의 게시물이 없습니다.");
+              } else {
+                result.forEach((doc) => {
+                  var 템플릿 = `<li class="list-products-item col-12 col-md-4 col-lg-3">
+              <a href="detail.html?id=${doc.id}">
+                  <div class="card">
+                      <div class="card-img-top" style="background: url('${doc.data().img}') no-repeat center; background-size: 100% 100%; height: 240px"></div>
+                      <div class="card-body">
+                          <h5 class="title">${doc.data().title}</h5>
+                          <h6 class="price">${doc.data().price}원</h6>
+                          <h6>작성자 : ${doc.data().name}</h6>
+                          <div class="text-muted">
+                              <h6 class="category">${doc.data().category}</h6>
+                              <p class="daytime">${doc.data().date.toDate()}</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </li>`;
+                  $("#ullist").append(템플릿);
+                });
+              }
+            });
+        } else {
+          db.collection("product")
+            .where("category", "==", option)
+            .orderBy("date", "desc")
+            .get()
+            .then((result) => {
+              if (result.empty) {
+                $("#ullist").append("해당 카테고리의 게시물이 없습니다.");
+              } else {
+                result.forEach((doc) => {
+                  var 템플릿 = `<li class="list-products-item col-12 col-md-4 col-lg-3">
+              <a href="detail.html?id=${doc.id}">
+                  <div class="card">
+                      <div class="card-img-top" style="background: url('${doc.data().img}') no-repeat center; background-size: 100% 100%; height: 240px"></div>
+                      <div class="card-body">
+                          <h5 class="title">${doc.data().title}</h5>
+                          <h6 class="price">${doc.data().price}원</h6>
+                          <h6>작성자 : ${doc.data().name}</h6>
+                          <div class="text-muted">
+                              <h6 class="category">${doc.data().category}</h6>
+                              <p class="daytime">${doc.data().date.toDate()}</p>
+                          </div>
+                      </div>
+                  </div>
+              </a>
+          </li>`;
+                  $("#ullist").append(템플릿);
+                });
+              }
+            });
+        }
+      }
+
+      $("#option1").click(() => {
+        optionSelected("공학계열");
+      });
+      $("#option2").click(() => {
+        optionSelected("인문사회계열");
+      });
+      $("#option3").click(() => {
+        optionSelected("자연과학계열");
+      });
+      $("#option4").click(() => {
+        optionSelected("예체능");
+      });
+      $("#option5").click(() => {
+        optionSelected("교양 및 기타");
+      });
+      $("#active").click(() => {
+        optionSelected(null);
+      });
   </script>
 
   <script>

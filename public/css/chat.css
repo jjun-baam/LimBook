@@ -1,0 +1,52 @@
+.chat-container {
+  width: 80%;
+  margin: 0 auto;
+  border: solid 2px black;
+  overflow: hidden;
+}
+.chat-content {
+  height: 450px;
+  overflow-y: scroll;
+  padding: 15px;
+}
+.chat-content li {
+  margin-top: 10px;
+  overflow: hidden;
+}
+.text-small {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 0;
+}
+
+.chat-box {
+  background: #eee;
+  padding: 5px;
+  border-radius: 5px;
+  float: left;
+}
+.mine {
+  float: right;
+}
+
+.chat-list {
+  width: 25%;
+  float: left;
+}
+
+.input-group {
+  margin: 10px;
+  text-align: right;
+}
+
+.chatName {
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.list-group-item {
+  margin: 20px 0;
+  padding: 10px;
+  border-bottom: 2px solid #a6aaae;
+}

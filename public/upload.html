@@ -1,562 +1,675 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>LIM BOOK</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" href="./images/limbook.ico" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" href="./css/common.css" />
-  <link rel="stylesheet" href="./css/main.css" />
-  <link rel="stylesheet" href="./css/list.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/css/bootstrap-slider.min.css" integrity="sha256-G3IAYJYIQvZgPksNQDbjvxd/Ca1SfCDFwu2s2lt0oGo=" crossorigin="anonymous" />
+    <title>LIM BOOK</title>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- GSAP & ScrollToPlugin -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js" integrity="sha512-agNfXmEo6F+qcj3WGryaRvl9X9wLMQORbTt5ACS9YVqzKDMzhRxY+xjgO45HCLm61OwHWR1Oblp4QSw/SGh9SA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  
-  <!-- SWIPER -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
-  
-  <!-- ScrollMagic -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="icon" href="./images/limbook.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/sub.css" />
+    <link rel="stylesheet" href="./css/base.css" />
 
-  <script defer src="./js/youtube.js"></script>
-  <script defer src="./js/common.js"></script>
-  <script defer src="./js/main.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- GSAP & ScrollToPlugin -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"
+      integrity="sha512-agNfXmEo6F+qcj3WGryaRvl9X9wLMQORbTt5ACS9YVqzKDMzhRxY+xjgO45HCLm61OwHWR1Oblp4QSw/SGh9SA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
 
- 
-</head>
-<body>
+    <!-- ScrollMagic -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
+      integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
+    <script defer src="./js/youtube.js"></script>
+    <script defer src="./js/common.js"></script>
+    <script defer src="./js/main.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="inner">
+        <a href="./index.html" class="logo">
+          <img src="./limBook_Logo.png" alt="LIMBOOK" />
+        </a>
 
-  <!-- HEADER -->
-  <header>
-    <div class="inner">
+        <div class="sub-menu">
+          <ul class="menu">
+            <li>
+              <a href="javascript:void(0)" id="userName"></a>
+            </li>
+            <li>
+              <a href="/signin/" id="userState">로그인</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">마이 페이지</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">장바구니</a>
+            </li>
+            <li>
+              <a href="./upload.html">판매/대여하기</a>
+            </li>
+          </ul>
+          <div class="search">
+            <input type="text" />
+            <div class="material-icons">search</div>
+          </div>
+        </div>
 
-      <a href="./index.html" class="logo">
-        <img src="./limBook_Logo.png" alt="LIMBOOK" />
-      </a>
-
-      <div class="sub-menu">
-        <ul class="menu">
-          <li>
-            <a href="javascript:void(0)" id="userName"></a>
+        <ul class="main-menu">
+          <li class="category">
+            <div class="category__name">LIM BOOK 안내</div>
+            <div class="category__contents">
+              <div class="contents__menu">
+                <ul class="inner">
+                  <li>
+                    <h4>LIM BOOK이란?</h4>
+                    <ul>
+                      <li>림북 소개</li>
+                      <li>개발 목적</li>
+                      <li>림북의 개발자들</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>공지사항</h4>
+                    <ul>
+                      <li>림북 뉴스</li>
+                      <li>림북의 좋은 소식</li>
+                      <li>림북의 나쁜 소식</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>이벤트</h4>
+                    <ul>
+                      <li>진행 중인 림북 이벤트</li>
+                      <li>종료된 림북 이벤트</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="contents__texture">
+                <div class="inner">
+                  <h4>대림대학교 학생전용 중고 도서 거래 사이트 '림북'</h4>
+                  <div class="inner2">
+                    <p>림북에서 필요한 도서를 찾아봅시다!</p>
+                  </div>
+                  <h4>오늘의 림북 소식은 무엇이 있을까요?</h4>
+                  <div class="inner2">
+                    <p>여러 소식들을 살펴봅시다!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
-          <li>
-            <a href="/signin/" id="userState">로그인</a>
+          <li class="category">
+            <div class="category__name">학과별 교재</div>
+            <div class="category__contents">
+              <div class="contents__menu">
+                <ul class="inner">
+                  <li>
+                    <h4>공학계열</h4>
+                    <ul>
+                      <li>건축과</li>
+                      <li>기계과</li>
+                      <li>메카트로닉스전공</li>
+                      <li>미래자동차학부</li>
+                      <li>전자통신과</li>
+                      <li>스마트팩토리과</li>
+                      <li>방송음향기술전공</li>
+                      <li>산업경영과</li>
+                      <li>소방안전설비과</li>
+                      <li>스마트소프트웨어전공</li>
+                      <li>실내디자인학부</li>
+                      <li>영상디자인전공</li>
+                      <li>의공융합과</li>
+                      <li>전기과</li>
+                      <li>컴퓨터소프트웨어전공</li>
+                      <li>토목환경과</li>
+                      <li>반도체과</li>
+                      <li>해군기술부사관과</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>인문사회계열</h4>
+                    <ul>
+                      <li>경영과</li>
+                      <li>도서관미디어정보과</li>
+                      <li>사무행정과</li>
+                      <li>사회복지과</li>
+                      <li>유아교육과</li>
+                      <li>항공서비스과</li>
+                      <li>호텔레저과</li>
+                      <li>아동보육과</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>자연과학계열</h4>
+                    <ul>
+                      <li>보건의료기기과</li>
+                      <li>언어치료과</li>
+                      <li>호텔조리전공</li>
+                      <li>제과제빵커피전공</li>
+                      <li>보건안전과</li>
+                      <li>보건의료행정과</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>예체능</h4>
+                    <ul>
+                      <li>스포츠지도과</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>교양 및 기타</h4>
+                    <ul>
+                      <li>교양 과목</li>
+                      <li>기타 도서</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="contents__texture">
+                <div class="inner">
+                  <h4>학과마다 다른 교재</h4>
+                  <div class="inner2">
+                    <p>해당 학과에서 필요한 교재들만 모아놨어요!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
-          <li>
-            <a href="javascript:void(0)">마이 페이지</a>
+          <li class="category">
+            <div class="category__name">구입/대출</div>
+            <div class="category__contents">
+              <div class="contents__menu">
+                <ul class="inner">
+                  <li>
+                    <h4>구입</h4>
+                    <ul>
+                      <li>도서 구입</li>
+                      <li>도서 구매 희망 게시판</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>대출</h4>
+                    <ul>
+                      <li>도서 대출</li>
+                      <li>도서 대출 희망 게시판</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="contents__texture">
+                <div class="inner">
+                  <h4>새책 구매 대신 림북 중고 구매!</h4>
+                  <div class="inner2">
+                    <p>저렴한 중고 구매로 금전적 부담을 줄여보세요!</p>
+                  </div>
+                  <h4>한번 쓰고 필요없을 것 같은 교재는?</h4>
+                  <div class="inner2">
+                    <p>림북 대출로 잠깐 빌려서 사용해봐요!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
-          <li>
-            <a href="javascript:void(0)">장바구니</a>
+          <li class="category">
+            <div class="category__name">후기 게시판</div>
+            <div class="category__contents">
+              <div class="contents__menu">
+                <ul class="inner">
+                  <li>
+                    <h4>구입/대출</h4>
+                    <ul>
+                      <li>구입 후기 게시판</li>
+                      <li>대출 후기 게시판</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>판매/대여</h4>
+                    <ul>
+                      <li>판매 후기 게시판</li>
+                      <li>대여 후기 게시판</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>기타</h4>
+                    <ul>
+                      <li>도서 후기 게시판</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="contents__texture">
+                <div class="inner">
+                  <h4>림북에서 거래를 하셨거나 하실 예정이세요?</h4>
+                  <div class="inner2">
+                    <p>후기를 통해 거래 내용을 확인해보세요!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
-          <li>
-            <a href="./upload.html">판매/대여하기</a>
+          <li class="category">
+            <div class="category__name">서비스 센터</div>
+            <div class="category__contents">
+              <div class="contents__menu">
+                <ul class="inner">
+                  <li>
+                    <h4>구입/대출</h4>
+                    <ul>
+                      <li>FAQ</li>
+                      <li>1:1문의하기</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>판매/대여</h4>
+                    <ul>
+                      <li>FAQ</li>
+                      <li>1:1문의하기</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <h4>기타</h4>
+                    <ul>
+                      <li>신고 문의</li>
+                      <li>기타 문의</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="contents__texture">
+                <div class="inner">
+                  <h4>림북은 문의를 환영합니다!<br /></h4>
+                  <div class="inner2">
+                    <p>궁금하거나 불편한 사항들을 부담없이 문의주세요!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
-        <div class="search">
-          <input type="text" />
-          <div class="material-icons">search</div>
+      </div>
+    </header>
+
+    <!-- 상품 판매 -->
+    <section class="notice">
+      <div class="container" id="sub_container">
+        <div class="width_fixed">
+          <div id="sub_contents" class="sub_contents">
+            <div id="sub_content_left" class="width_lg_100p">
+              <div id="sub_content_inner">
+                <h4 class="sub_title">도서 판매 글 작성</h4>
+                <p class="text_right mb10">
+                  글 작성 시 <i class="icon_required"></i> 필수 표시된 항목은 꼭 기재해 주세요
+                </p>
+                <form method="post" id="writeForm">
+                  <fieldset>
+                    <legend>자유 게시판 글쓰기</legend>
+                    <div class="board">
+                      <table class="form type1">
+                        <caption>
+                          자유 게시판 글쓰기 : 카테고리, 제목, 작성자로 구성됨
+                        </caption>
+                        <colgroup>
+                          <col class="width_20p width_phone_120 width_sm_30p" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th scope="row">
+                              <label for="category">카테고리</label><span class="icon_required">필수</span>
+                            </th>
+                            <td>
+                              <select name="category" id="category" class="input01 width_150">
+                                <option value="카테고리1">공학계열</option>
+                                <option value="카테고리2">인문사회계열</option>
+                                <option value="카테고리3">자연과학계열</option>
+                                <option value="카테고리4">예체능</option>
+                                <option value="카테고리5">교양 및 기타</option>
+                              </select>
+                              <span class="guide">* 카테고리를 선택해주세요</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              <label for="subject">제목</label><span class="icon_required">필수</span>
+                            </th>
+                            <td>
+                              <input
+                                type="text"
+                                name="subject"
+                                id="title"
+                                placeholder="제목을 입력해주세요"
+                                maxlength="20"
+                                class="input01 required width_400"
+                                required
+                              />
+                              <span class="guide">* 20자 이내로 입력하세요</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><label for="price">가격</label><span class="icon_required">필수</span></th>
+                            <td>
+                              <input
+                                type="number"
+                                name="price"
+                                id="price"
+                                placeholder="가격을 입력해주세요"
+                                class="input01 required width_400"
+                                required
+                              />
+                              <span class="guide">* 숫자만 입력해주세요</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table class="form type1">
+                        <caption>
+                          자유 게시판 글쓰기 : 내용으로 구성됨
+                        </caption>
+                        <colgroup>
+                          <col class="width_20p width_phone_120 width_sm_30p" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th scope="row">
+                              <label for="contents">내용 작성</label><span class="icon_required">필수</span>
+                            </th>
+                            <td>
+                              <textarea
+                                name="contents"
+                                id="contents"
+                                cols="30"
+                                rows="10"
+                                class="input01 width_100p"
+                                placeholder="내용을 입력해주세요"
+                                required
+                              ></textarea>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p class="color_red bg_yellow lh30 mt10 mb10 pl10 pr10">
+                        ※ 개인정보 노출피해방지를 위하여 주민번호나 계좌번호 등의 개인정보가 노출되어있는지는 않은지
+                        확인하시기 바랍니다.
+                      </p>
+                      <table class="form type1">
+                        <caption>
+                          자유 게시판 글쓰기 : 첨부파일로 구성됨
+                        </caption>
+                        <colgroup>
+                          <col class="width_20p width_phone_120 width_sm_30p" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th scope="row">
+                              <label for="file">첨부파일</label><span class="icon_required">필수</span>
+                            </th>
+                            <td>
+                              <input type="file" name="file" id="image" />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="btn_area text_right">
+                      <a href="/list.html" class="btn_gray btn btn_regular btn_radius5">취소</a>
+                      <input
+                        type="submit"
+                        value="쓰기"
+                        class="btn_board_write btn btn_navy btn_radius5 btn_regular btn_right"
+                        id="send"
+                      />
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <ul class="main-menu">
-        <li class="category">
-          <div class="category__name">LIM BOOK 안내</div>
-          <div class="category__contents">
-            <div class="contents__menu">
-              <ul class="inner">
-                <li>
-                  <h4>LIM BOOK이란?</h4>
-                  <ul>
-                    <li>림북 소개</li>
-                    <li>개발 목적</li>
-                    <li>림북의 개발자들</li>
-                  </ul>
-                </li>
-                <li>
-                  <h4>공지사항</h4>
-                  <ul>
-                    <li>림북 뉴스</li>
-                    <li>림북의 좋은 소식</li>
-                    <li>림북의 나쁜 소식</li>
-                  </ul>
-                </li>
-                <li>
-                  <h4>이벤트</h4>
-                  <ul>
-                    <li>진행 중인 림북 이벤트</li>
-                    <li>종료된 림북 이벤트</li>
-                  </ul>
-                </li>
-              </ul>
+    <!-- SITE-LINK-->
+    <section class="site-link">
+      <div class="inner">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="http://www.yes24.com/Main/default.aspx">
+                <img src="./images/site_slide1.jpg" alt="예스24" />
+              </a>
             </div>
-            <div class="contents__texture">
-              <div class="inner">
-                <h4>대림대학교 학생전용 중고 도서 거래 사이트 '림북'</h4>
-                <div class="inner2">
-                  <p>림북에서 필요한 도서를 찾아봅시다!</p>
-                </div>
-                <h4>오늘의 림북 소식은 무엇이 있을까요?</h4>
-                <div class="inner2">
-                  <p>여러 소식들을 살펴봅시다!</p>
-                </div>
-              </div>
+            <div class="swiper-slide">
+              <a href="http://lib.daelim.ac.kr/">
+                <img src="./images/site_slide2.jpg" alt="수암도서관" />
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="https://www.aladin.co.kr/home/welcome.aspx">
+                <img src="./images/site_slide3.jpg" alt="알라딘" />
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="http://www.interpark.com/malls/index.html?gateTp=1">
+                <img src="./images/site_slide4.jpg" alt="인터파크" />
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="https://www.daangn.com/">
+                <img src="./images/site_slide5.jpg" alt="당근마켓" />
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a
+                href="https://cafe.naver.com/joonggonara.cafe?iframe_url=/ArticleList.nhn%3Fsearch.clubid=10050146%26search.boardtype=L%26viewType=pc"
+              >
+                <img src="./images/site_slide6.jpg" alt="중고나라" />
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="https://m.bunjang.co.kr/">
+                <img src="./images/site_slide7.jpg" alt="번개장터" />
+              </a>
             </div>
           </div>
-        </li>
-        <li class="category">
-          <div class="category__name">학과별 교재</div>
-          <div class="category__contents">
-            <div class="contents__menu">
-              <ul class="inner">
-                <li>
-                  <h4>공학계열</h4>
-                  <ul>
-                    <li>건축과</li>
-                    <li>기계과</li>
-                    <li>메카트로닉스전공</li>
-                    <li>미래자동차학부</li>
-                    <li>전자통신과</li>
-                    <li>스마트팩토리과</li>
-                    <li>방송음향기술전공</li>
-                    <li>산업경영과</li>
-                    <li>소방안전설비과</li>
-                    <li>스마트소프트웨어전공</li>
-                    <li>실내디자인학부</li>
-                    <li>영상디자인전공</li>
-                    <li>의공융합과</li>
-                    <li>전기과</li>
-                    <li>컴퓨터소프트웨어전공</li>
-                    <li>토목환경과</li>
-                    <li>반도체과</li>
-                    <li>해군기술부사관과</li>
-                  </ul>
-                </li>
-                <li>
-                  <h4>인문사회계열</h4>
-                  <ul>
-                    <li>경영과</li>
-                    <li>도서관미디어정보과</li>
-                    <li>사무행정과</li>
-                    <li>사회복지과</li>
-                    <li>유아교육과</li>
-                    <li>항공서비스과</li>
-                    <li>호텔레저과</li>
-                    <li>아동보육과</li>
-                  </ul>
-                </li>
-                <li>
-                  <h4>자연과학계열</h4>
-                  <ul>
-                    <li>보건의료기기과</li>
-                    <li>언어치료과</li>
-                    <li>호텔조리전공</li>
-                    <li>제과제빵커피전공</li>
-                    <li>보건안전과</li>
-                    <li>보건의료행정과</li>            
-                  </ul>
-                </li>
-                <li>
-                  <h4>예체능</h4>
-                  <ul>
-                    <li>스포츠지도과</li>
-                  </ul>
-                </li>
-                <li>
-                  <h4>교양 및 기타</h4>
-                  <ul>
-                    <li>교양 과목</li>
-                    <li>기타 도서</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <div class="contents__texture">
-              <div class="inner">
-                <h4>학과마다 다른 교재</h4>
-                <div class="inner2">
-                  <p>해당 학과에서 필요한 교재들만 모아놨어요!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="category">
-          <div class="category__name">구입/대출</div>
-          <div class="category__contents">
-            <div class="contents__menu">
-              <ul class="inner">
-                <li>
-                  <h4>구입</h4>
-                  <ul>
-                    <li>도서 구입</li>
-                    <li>도서 구매 희망 게시판</li>
-                  </ul>
-                </li>
-                <li>
-                  <h4>대출</h4>
-                  <ul>
-                    <li>도서 대출</li>
-                    <li>도서 대출 희망 게시판</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <div class="contents__texture">
-              <div class="inner">
-                <h4>새책 구매 대신 림북 중고 구매!</h4>
-                <div class="inner2">
-                  <p>저렴한 중고 구매로 금전적 부담을 줄여보세요!</p>
-                </div>
-                <h4>한번 쓰고 필요없을 것 같은 교재는?</h4>
-                <div class="inner2">
-                  <p>림북 대출로 잠깐 빌려서 사용해봐요!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="category">
-          <div class="category__name">후기 게시판</div>
-          <div class="category__contents">
-            <div class="contents__menu">
-              <ul class="inner">
-                <li>
-                  <h4>구입/대출</h4>
-                  <ul>
-                    <li>구입 후기 게시판</li>
-                    <li>대출 후기 게시판</li>                   
-                  </ul>
-                </li>
-                <li>
-                  <h4>판매/대여</h4>
-                  <ul>
-                    <li>판매 후기 게시판</li>
-                    <li>대여 후기 게시판</li>
-                  </ul>
-                </li>
-                <li>
-                  <h4>기타</h4>
-                  <ul>
-                    <li>도서 후기 게시판</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <div class="contents__texture">
-              <div class="inner">
-                <h4>림북에서 거래를 하셨거나 하실 예정이세요?</h4>
-                <div class="inner2">
-                  <p>후기를 통해 거래 내용을 확인해보세요!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="category">
-          <div class="category__name">서비스 센터</div>
-          <div class="category__contents">
-            <div class="contents__menu">
-              <ul class="inner">
-                <li>
-                  <h4>구입/대출</h4>
-                  <ul>
-                    <li>FAQ</li>
-                    <li>1:1문의하기</li>
-                  </ul>
-                </li>
-                <li>
-                  <h4>판매/대여</h4>
-                  <ul>
-                    <li>FAQ</li>
-                    <li>1:1문의하기</li>
-                  </ul>
-                </li>
-                <li>
-                  <h4>기타</h4>
-                  <ul>
-                    <li>신고 문의</li>
-                    <li>기타 문의</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <div class="contents__texture">
-              <div class="inner">
-                <h4>림북은 문의를 환영합니다!</br></h4>
-                <div class="inner2">
-                  <p>궁금하거나 불편한 사항들을 부담없이 문의주세요!</p>
-                </div>              
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    
-    </div>
+        </div>
 
-    <div class="badges">
-      <div class="badge">
-        <img src="./images/limbook_badge1.jpg" alt="Badge1" />
-      </div>
-      <div class="badge">
-        <img src="./images/limbook_badge2.jpg" alt="Badge2" />
-      </div>
-    </div>
-  </header>
-
- 
-  <!-- 상품 판매 -->
-  <section class="book-list">
-    <div class="container mt-3">
-        <input type="text" class="form-control mt-2" id="title" placeholder="title">
-        <textarea class="form-control mt-2" id="content" placeholder="content"></textarea>
-        <input type="text" class="form-control mt-2" id="price" placeholder="price">
-        <input class="form-control mt-2" type="file" id="image">
-        <input class="form-control mt-2" type="text" id="category" placeholder="category">
-        <button class="btn btn-danger mt-3" id="send">올리기</button>
-      </div>
-  </section>
-  
-  <!-- FIND A BOOK -->
-  <!-- <section class="find-book scroll-spy">
-    <div class="inner">
-
-      <img src="./images/use_limbook_texture1.png" alt="배경 아이콘1" class="texture1" />
-      <img src="./images/use_limbook_texture2.png" alt="배경 아이콘2" class="texture2" />
-      <img src="./images/use_limbook_picture1.jpg" alt="사진1" class="picture picture1 back-to-position to-right delay-0" />
-      <img src="./images/use_limbook_picture2.jpg" alt="사진2" class="picture picture2 back-to-position to-right delay-1" />
-
-      <div class="text-group">
-        <img src="./images/use_limbook_text1.png" alt="림북을 통해 교재를 거래해보세요." class="title back-to-position to-left delay-0" />
-        <img src="./images/use_limbook_text2.png" alt="구입하고! 대출하고! 판매/대여!" class="description back-to-position to-left delay-1" />
-        <div class="more back-to-position to-left delay-2">
-          <a href="javascript:void(0)" class="btn">도서 구경하기</a>
+        <div class="swiper-prev">
+          <div class="material-icons">arrow_back</div>
+        </div>
+        <div class="swiper-next">
+          <div class="material-icons">arrow_forward</div>
         </div>
       </div>
-      
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="inner">
+        <ul class="menu">
+          <li><a href="javascript:void(0)" class="green">개인정보처리방침</a></li>
+          <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
+          <li><a href="javascript:void(0)">광고운영정책</a></li>
+          <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
+          <li><a href="javascript:void(0)">중고도서정책</a></li>
+          <li><a href="javascript:void(0)">윤리경영 핫라인</a></li>
+        </ul>
+
+        <div class="btn-group">
+          <a href="https://pt.daelim.ac.kr/" target="_blank" class="btn btn--white">학생포털</a>
+          <a href="https://lms.daelim.ac.kr/my/index.php" target="_blank" class="btn btn--white">BigFOREST</a>
+          <a href="https://daelim.everytime.kr/" target="_blank" class="btn btn--white">에브리타임</a>
+        </div>
+
+        <div class="info">
+          <span>사업자등록번호 123-45-67890</span>
+          <span>(팀)림북 : 김준범 김요환 박주형 이해준 최근우</span>
+          <span>TEL : 02) 1234-5678 / FAX : 02) 5678-1234</span>
+        </div>
+
+        <p class="copyright">
+          &copy; <span class="this-year"></span> Capstone Design Team LimBook. All Rights Reserved.
+        </p>
+        <img src="../images/limbook_logo_only_text.png" alt="" class="logo" />
+      </div>
+    </footer>
+
+    <div id="to-top">
+      <div class="material-icons">arrow_upward</div>
     </div>
-  </section> -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
 
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- SITE-LINK-->
-  <section class="site-link">
-    <div class="inner">
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyCB1lvUxpdNZibf7rDKbfPQW4GGHV1jOfU",
+        authDomain: "limbook-7cd80.firebaseapp.com",
+        projectId: "limbook-7cd80",
+        storageBucket: "limbook-7cd80.appspot.com",
+        messagingSenderId: "616165931768",
+        appId: "1:616165931768:web:3f797ff4a9a8c0c2f8990d",
+        measurementId: "G-BDDR0TLJN1",
+      };
+      //Initailize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
 
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <a href="http://www.yes24.com/Main/default.aspx">
-              <img src="./images/site_slide1.jpg" alt="예스24" />
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="http://lib.daelim.ac.kr/">
-              <img src="./images/site_slide2.jpg" alt="수암도서관" />
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="https://www.aladin.co.kr/home/welcome.aspx">
-              <img src="./images/site_slide3.jpg" alt="알라딘" />
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="http://www.interpark.com/malls/index.html?gateTp=1">
-              <img src="./images/site_slide4.jpg" alt="인터파크" />
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="https://www.daangn.com/">
-              <img src="./images/site_slide5.jpg" alt="당근마켓" />
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="https://cafe.naver.com/joonggonara.cafe?iframe_url=/ArticleList.nhn%3Fsearch.clubid=10050146%26search.boardtype=L%26viewType=pc">
-              <img src="./images/site_slide6.jpg" alt="중고나라" />
-            </a>
-          </div>
-          <div class="swiper-slide">
-            <a href="https://m.bunjang.co.kr/">
-              <img src="./images/site_slide7.jpg" alt="번개장터" />
-            </a>
-          </div>
-        </div> 
-      </div>
+    <script>
+      const db = firebase.firestore();
+      const storage = firebase.storage();
 
-      <div class="swiper-prev">
-        <div class="material-icons">arrow_back</div>
-      </div>
-      <div class="swiper-next">
-        <div class="material-icons">arrow_forward</div>
-      </div>
+      $("#send").click(function (event) {
+        event.preventDefault();
 
-    </div>
-  </section>
-
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="inner">
-      <ul class="menu">
-        <li><a href="javascript:void(0)" class="green">개인정보처리방침</a></li>
-        <li><a href="javascript:void(0)">홈페이지 이용약관</a></li>
-        <li><a href="javascript:void(0)">광고운영정책</a></li>
-        <li><a href="javascript:void(0)">위치정보 이용약관</a></li>
-        <li><a href="javascript:void(0)">중고도서정책</a></li>
-        <li><a href="javascript:void(0)">윤리경영 핫라인</a></li>
-      </ul>
-
-      <div class="btn-group">
-        <a href="https://pt.daelim.ac.kr/" target='_blank' class="btn btn--white">학생포털</a>
-        <a href="https://lms.daelim.ac.kr/my/index.php" target='_blank' class="btn btn--white">BigFOREST</a>
-        <a href="https://daelim.everytime.kr/" target='_blank' class="btn btn--white">에브리타임</a>
-      </div>
-
-      <div class="info">
-        <span>사업자등록번호 123-45-67890</span>
-        <span>(팀)림북 : 김준범 김요환 박주형 이해준 최근우</span>
-        <span>TEL : 02) 1234-5678 / FAX : 02) 5678-1234</span>
-      </div>
-
-      <p class="copyright">
-        &copy; <span class="this-year"></span> Capstone Design Team LimBook. All Rights Reserved.
-      </p>
-      <img src="../images/limbook_logo_only_text.png" alt="" class="logo" />
-
-    </div>
-  </footer>
-
-  <div id="to-top">
-    <div class="material-icons">arrow_upward</div>
-  </div>
-  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyCB1lvUxpdNZibf7rDKbfPQW4GGHV1jOfU",
-      authDomain: "limbook-7cd80.firebaseapp.com",
-      projectId: "limbook-7cd80",
-      storageBucket: "limbook-7cd80.appspot.com",
-      messagingSenderId: "616165931768",
-      appId: "1:616165931768:web:3f797ff4a9a8c0c2f8990d",
-      measurementId: "G-BDDR0TLJN1"
-    };
-    //Initailize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
-
-  <script>
-    const db = firebase.firestore();
-    const storage = firebase.storage();
-
-    
-    $('#send').click(function(){
-
-        var file = document.querySelector('#image').files[0];
+        var file = document.querySelector("#image").files[0];
 
         var storageRef = storage.ref();
-        var savedurl = storageRef.child('image/' + file.name);
+        var savedurl = storageRef.child("image/" + file.name);
         var uploaded = savedurl.put(file);
 
-        uploaded.on( 'state_changed', 
-            // 변화시 동작하는 함수 
-            null, 
-            //에러시 동작하는 함수
-            (error) => {
-            console.error('실패사유는', error);
-            }, 
-            // 성공시 동작하는 함수
-            () => {
-                uploaded.snapshot.ref.getDownloadURL().then((url) => {
-                    var savequery = {
-                        title : $('#title').val(),
-                        price : $('#price').val(),
-                        date : new Date(),
-                        category : $('#category').val(),
-                        img : url 
-                    }
+        uploaded.on(
+          "state_changed",
+          // 변화시 동작하는 함수
+          null,
+          //에러시 동작하는 함수
+          (error) => {
+            console.error("실패사유는", error);
+          },
+          // 성공시 동작하는 함수
+          () => {
+            uploaded.snapshot.ref.getDownloadURL().then((url) => {
+              var savequery = {
+                title: $("#title").val(),
+                price: $("#price").val(),
+                date: new Date(),
+                category: $("#category option:selected").text(),
+                img: url,
+                name: JSON.parse(localStorage.getItem("user")).displayName,
+                content: $("#contents").val(),
+              };
 
-                    db.collection('product').add(savequery).then((result)=>{
-                        window.location.href = "./list.html";
-                    }).catch((err)=>{
-                        console.log(err);
-                    })
+              db.collection("product")
+                .add(savequery)
+                .then((result) => {
+                  window.location.href = "./list.html";
+                })
+                .catch((err) => {
+                  console.log(err);
                 });
-            }
+            });
+          }
         );
-        
-    });
-    
-   
-  </script>
-  
-  <script>
-    //유저정보 확인
-    if(localStorage.getItem('user') != null){
-        var getuser = localStorage.getItem('user');
-        $('#userName').html(JSON.parse(getuser).displayName + "님 환영합니다.")
-        $('#userState').html('로그아웃')
+      });
+    </script>
+
+    <script>
+      //유저정보 확인
+      if (localStorage.getItem("user") != null) {
+        var getuser = localStorage.getItem("user");
+        $("#userName").html(JSON.parse(getuser).displayName + "님 환영합니다.");
+        $("#userState").html("로그아웃");
         document.getElementById("userState").href = "javascript:void(0)";
-    }else{
-      $('#userState').html('로그인')
-      document.getElementById("userState").href = "/signin/";
-    }
-
-    //로그인 된 사용자 가져오기
-    firebase.auth().onAuthStateChanged((user)=>{
-      if(user){
-        //로그인 된 상태
-        console.log(user)
-        //console.log(user.displayName)
-        localStorage.setItem('user', JSON.stringify(user))
-        
+      } else {
+        $("#userState").html("로그인");
+        document.getElementById("userState").href = "/signin/";
       }
-    })
 
-    $('#userState').click(function(){
+      //로그인 된 사용자 가져오기
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          //로그인 된 상태
+          console.log(user);
+          //console.log(user.displayName)
+          localStorage.setItem("user", JSON.stringify(user));
+        }
+      });
 
-      if(document.getElementById('userState').textContent == "로그아웃"){
-        firebase.auth().signOut()
-        localStorage.removeItem('user')
-        window.location.href  = "/";
-      }
-    })
-
-    $('#logout').click(function(){
-
-      firebase.auth().signOut()
-      localStorage.removeItem('user')
-      window.location.href  = "/";
-    })
-    $('#login').click(function(){
-
-      var 이메일 = $('#email').val();
-      var 패스워드 = $('#pw').val();
-
-      firebase.auth().signInWithEmailAndPassword(이메일, 패스워드).then((result)=>{
-          console.log(result.user)
+      $("#userState").click(function () {
+        if (document.getElementById("userState").textContent == "로그아웃") {
+          firebase.auth().signOut();
+          localStorage.removeItem("user");
           window.location.href = "/";
-      })
-    })
-  </script>
-</body>
+        }
+      });
 
+      $("#logout").click(function () {
+        firebase.auth().signOut();
+        localStorage.removeItem("user");
+        window.location.href = "/";
+      });
+      $("#login").click(function () {
+        var 이메일 = $("#email").val();
+        var 패스워드 = $("#pw").val();
+
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(이메일, 패스워드)
+          .then((result) => {
+            console.log(result.user);
+            window.location.href = "/";
+          });
+      });
+    </script>
+  </body>
 </html>

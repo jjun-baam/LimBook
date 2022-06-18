@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>LIM BOOK : 로그인</title>
+
+    <link rel="icon" href="../images/limbook.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/signin.css" />
+
+    <script defer src="../js/common.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script src="/js/includeHTML.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header w3-include-html="/header.html"></header>
+
+    <!-- MAIN -->
+    <section class="signin">
+      <h1>로그인</h1>
+      <div class="signin__card">
+        <h2><strong>Welcome!</strong> 림북에 오신 것을 환영합니다.</h2>
+        <!--
+      <div class="container mt-3">
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="email" id="email">
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" placeholder="pw" id="pw">
+        </div>
+        <button type="submit" class="btn btn-primary" id="login">로그인하기</button>
+        <button type="submit" class="btn btn-primary" id="logout">로그아웃</button>
+      </div>
+      -->
+
+        <div class="form">
+          <input type="text" placeholder="아이디를 입력하세요." id="email" />
+          <input type="password" placeholder="비밀번호를 입력하세요." id="pw" />
+          <input type="submit" value="로그인" id="login" />
+          <p>
+            * 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br />
+            정기적으로 비밀번호를 변경하세요!
+          </p>
+        </div>
+        <div class="actions">
+          <a href="./register.html">회원가입</a>
+          <a href="javascript:void(0)">아이디 찾기</a>
+          <a href="javascript:void(0)">비밀번호 찾기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer w3-include-html="/footer.html"></footer>
+
+    <!--header footer합치기 -->
+    <script>
+      includeHTML();
+    </script>
+
+    <!-- Firebase Code -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="module" src="/js/firebaseConfig.js"></script>
+    <script type="module" src="/js/loginCheck.js"></script>
+  </body>
+</html>

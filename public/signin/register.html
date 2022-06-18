@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>LIM BOOK : 회원가입</title>
+
+    <link rel="icon" href="../images/limbook.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/signin.css" />
+
+    <script defer src="../js/common.js"></script>
+
+    <script src="/js/includeHTML.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header w3-include-html="/header.html"></header>
+
+    <!-- MAIN -->
+    <section class="signin">
+      <h1>회원가입</h1>
+      <div class="signin__card">
+        <h2><strong>Welcome!</strong> 림북에 오신 것을 환영합니다.</h2>
+        <div class="form">
+          <label>닉네임<input type="text" placeholder="닉네임을 입력하세요." id="name-new" /></label>
+          <label>이메일</label>
+          <div class="email">
+            <input type="text" placeholder="이메일을 입력하세요." id="email-new" />
+            <input type="text" placeholder="@.com" name="email_add" id="email_add"/>
+            <select name="email_sel" id="email_sel" onchange="change_email();">
+              <option value="">직접입력</option>
+              <option value="@naver.com">naver</option>
+              <option value="@gmail.com">google</option>
+              <option value="@daum.net">daum</option>
+              <option value="@nate.com">nate</option>
+              <option value="@email.daelim.ac.kr">daelim</option>
+            </select>       
+          </div>
+          <label>비밀번호</label>
+          <input type="password" placeholder="비밀번호를 입력하세요." id="pw-new" />
+          <label>비밀번호 확인</label>
+          <input type="password" placeholder="비밀번호 확인." id="pw-ned"/>
+          <label>대림대학교 학생 인증</label>
+          <div class="check">
+            <input type="text" placeholder="대림대학교 이메일 인증" id="email-ok"/>
+            <input type="submit" id="check" value="인증" />
+          </div>
+          <input type="submit" value="회원가입" id="register" />
+
+
+
+
+
+
+
+          <p>
+            * 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br />
+            정기적으로 비밀번호를 변경하세요!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer w3-include-html="/footer.html"></footer>
+
+    <!--header footer합치기 -->
+    <script>
+      includeHTML();
+    </script>
+
+    <!-- Firebase Code -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="module" src="/js/firebaseConfig.js"></script>
+    <script type="module" src="/js/loginCheck.js"></script>
+    <script type="module">
+      import { db, storage } from "/js/firebaseConfig.js";
+
+      $("#register").click(function () {
+        var 이메일 = $("#email-new").val();
+        var 패스워드 = $("#pw-new").val();
+        var 닉네임 = $("#name-new").val();
+
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(이메일, 패스워드)
+          .then(async (result) => {
+            console.log(result.user);
+            await result.user.updateProfile({ displayName: 닉네임 });
+            window.location.href = "/";
+          });
+      });
+    </script>
+  </body>
+</html>

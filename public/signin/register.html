@@ -28,25 +28,38 @@
       <h1>회원가입</h1>
       <div class="signin__card">
         <h2><strong>Welcome!</strong> 림북에 오신 것을 환영합니다.</h2>
-        <!--
-      <div class="container mt-3">
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="name" id="name-new">
-        </div>
-        <div class="mb-3">
-          <input type="email" class="form-control" placeholder="email" id="email-new">
-        </div>
-        <div class="mb-3">
-          <input type="password" class="form-control" placeholder="pw" id="pw-new">
-        </div>
-        <button type="submit" class="btn btn-primary" id="register">가입하기</button>
-     </div>
-     -->
         <div class="form">
-          <input type="text" placeholder="닉네임을 입력하세요." id="name-new" />
-          <input type="text" placeholder="이메일을 입력하세요." id="email-new" />
+          <label>닉네임<input type="text" placeholder="닉네임을 입력하세요." id="name-new" /></label>
+          <label>이메일</label>
+          <div class="email">
+            <input type="text" placeholder="이메일을 입력하세요." id="email-new" />
+            <input type="text" placeholder="@.com" name="email_add" id="email_add"/>
+            <select name="email_sel" id="email_sel" onchange="change_email();">
+              <option value="">직접입력</option>
+              <option value="@naver.com">naver</option>
+              <option value="@gmail.com">google</option>
+              <option value="@daum.net">daum</option>
+              <option value="@nate.com">nate</option>
+              <option value="@email.daelim.ac.kr">daelim</option>
+            </select>       
+          </div>
+          <label>비밀번호</label>
           <input type="password" placeholder="비밀번호를 입력하세요." id="pw-new" />
+          <label>비밀번호 확인</label>
+          <input type="password" placeholder="비밀번호 확인." id="pw-ned"/>
+          <label>대림대학교 학생 인증</label>
+          <div class="check">
+            <input type="text" placeholder="대림대학교 이메일 인증" id="email-ok"/>
+            <input type="submit" id="check" value="인증" />
+          </div>
           <input type="submit" value="회원가입" id="register" />
+
+
+
+
+
+
+
           <p>
             * 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br />
             정기적으로 비밀번호를 변경하세요!

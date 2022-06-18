@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>LIM BOOK : 로그인</title>
+
+    <link rel="icon" href="../images/limbook.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/signin.css" />
+    <link rel="stylesheet" href="./css/chat.css" />
+
+    <script defer src="../js/common.js"></script>
+  </head>
+  <body>
+    <ul class="list-group chat-list" id="group"></ul>
+
+    <ul class="list-group chat-content" id="groupItem"></ul>
+    <div class="input-group">
+      <input class="form-control" id="chat-input" />
+      <button class="btn btn-secondary" id="send">전송</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script type="module" src="./js/firebaseConfig.js"></script>
+    <script type="module" src="./js/loginCheck.js"></script>
+    <script type="module">
+      import { db, storage } from "./js/firebaseConfig.js";
+
+      const 내uid = JSON.parse(localStorage.getItem("user"));
+      const queryString = new URLSearchParams(window.location.search);
+      const 상품id = queryString.get("id");
+      const myDiv = document.getElementById("groupItem");
+      const inputText = document.getElementById("#chat-input");
+
+      let 채팅방id;
+      let 템플릿;
+
+      db.collection("product")
+        .doc(상품id)
+        .collection("chat-room")
+        .orderBy("date")
+        .get()
+        .then((result) => {
+          result.forEach((a) => {
+            const templates = `<li class="list-group-item">
+              <h6>${a.data().chatName}</h6>
+              <h6 class="text-small">${a.id}</h6>
+            </li>`;
+            $("#group").append(templates);
+          });
+          $(".chat-content").html("채팅방을 클릭해주세요");
+
+          $(".list-group-item").click(function (e) {
+            console.log("클릭되었습니다.");
+            채팅방id = $(this).children(".text-small").text();
+            console.log(채팅방id);
+            e.stopImmediatePropagation();
+
+            showMessage(채팅방id);
+          });
+        });
+
+      function showMessage(data) {
+        db.collection("product")
+          .doc(상품id)
+          .collection("chat-room")
+          .doc(data)
+          .collection("messages")
+          .orderBy("data")
+          .onSnapshot((result) => {
+            $(".chat-content").html("");
+
+            result.forEach((a) => {
+              const chatdata = a.data().uid;
+              var 템플릿;
+              if (chatdata == 내uid) 템플릿 = `<li><span class="chat-box mine">${a.data().content}</span></li>`;
+              else 템플릿 = `<li><span class="chat-box">${a.data().content}</span></li>`;
+              $(".chat-content").append(템플릿);
+            });
+          });
+      }
+      $("#send").click(function () {
+        const 데이터 = {
+          content: $("#chat-input").val(),
+          data: new Date(),
+          uid: 내uid,
+        };
+        db.collection("product").doc(상품id).collection("chat-room").doc(채팅방id).collection("messages").add(데이터);
+      });
+    </script>
+  </body>
+</html>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>LIM BOOK : 로그인</title>
+    <title>LIM BOOK : 회원가입</title>
 
     <link rel="icon" href="../images/limbook.ico" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
@@ -17,11 +17,6 @@
 
     <script defer src="../js/common.js"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-
     <script src="/js/includeHTML.js"></script>
   </head>
   <body>
@@ -30,35 +25,32 @@
 
     <!-- MAIN -->
     <section class="signin">
-      <h1>로그인</h1>
+      <h1>회원가입</h1>
       <div class="signin__card">
         <h2><strong>Welcome!</strong> 림북에 오신 것을 환영합니다.</h2>
         <!--
       <div class="container mt-3">
         <div class="mb-3">
-          <input type="email" class="form-control" placeholder="email" id="email">
+          <input type="text" class="form-control" placeholder="name" id="name-new">
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" placeholder="pw" id="pw">
+          <input type="email" class="form-control" placeholder="email" id="email-new">
         </div>
-        <button type="submit" class="btn btn-primary" id="login">로그인하기</button>
-        <button type="submit" class="btn btn-primary" id="logout">로그아웃</button>
-      </div>
-      -->
-
+        <div class="mb-3">
+          <input type="password" class="form-control" placeholder="pw" id="pw-new">
+        </div>
+        <button type="submit" class="btn btn-primary" id="register">가입하기</button>
+     </div>
+     -->
         <div class="form">
-          <input type="text" placeholder="아이디를 입력하세요." id="email" />
-          <input type="password" placeholder="비밀번호를 입력하세요." id="pw" />
-          <input type="submit" value="로그인" id="login" />
+          <input type="text" placeholder="닉네임을 입력하세요." id="name-new" />
+          <input type="text" placeholder="이메일을 입력하세요." id="email-new" />
+          <input type="password" placeholder="비밀번호를 입력하세요." id="pw-new" />
+          <input type="submit" value="회원가입" id="register" />
           <p>
             * 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니,<br />
             정기적으로 비밀번호를 변경하세요!
           </p>
-        </div>
-        <div class="actions">
-          <a href="./register.html">회원가입</a>
-          <a href="javascript:void(0)">아이디 찾기</a>
-          <a href="javascript:void(0)">비밀번호 찾기</a>
         </div>
       </div>
     </section>
@@ -85,5 +77,23 @@
 
     <script type="module" src="/js/firebaseConfig.js"></script>
     <script type="module" src="/js/loginCheck.js"></script>
+    <script type="module">
+      import { db, storage } from "/js/firebaseConfig.js";
+
+      $("#register").click(function () {
+        var 이메일 = $("#email-new").val();
+        var 패스워드 = $("#pw-new").val();
+        var 닉네임 = $("#name-new").val();
+
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(이메일, 패스워드)
+          .then(async (result) => {
+            console.log(result.user);
+            await result.user.updateProfile({ displayName: 닉네임 });
+            window.location.href = "/";
+          });
+      });
+    </script>
   </body>
 </html>
